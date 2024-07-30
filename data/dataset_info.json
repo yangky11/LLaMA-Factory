@@ -571,5 +571,11 @@
       "prompt": "content"
     },
     "folder": "python"
+  },
+  "leandojo_benchmark_4_train": {
+    "file_name": "state_tactic_pairs_train.json"
+  },
+  "leandojo_benchmark_4_val": {
+    "file_name": "state_tactic_pairs_val.json"
   }
 }

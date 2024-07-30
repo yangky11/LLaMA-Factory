@@ -1,3 +1,30 @@
+## Finetuning LLaMA 3 8B on LeanDojo Benchmark
+
+### Requirements
+
+```bash
+pip install -e ".[torch,metrics]"
+```
+
+### Data Preprocessing
+
+Run [preproess.py](https://github.com/lean-dojo/ReProver/blob/main/generation/preprocess.py) to preprocess the state-tactic pairs in the training set into ./data/state_tactic_pairs.json under this repo.
+
+### Training
+
+Run `llamafactory-cli train examples/train_full/llama3-8b_leandojo.yaml` using 8xA100 GPUs. The model checkpoints will be saved to the ./saves directory.
+
+
+### Evaluation
+
+In [ReProver](https://github.com/lean-dojo/ReProver), run:
+```bash
+python prover/evaluate.py --data-path data/leandojo_benchmark_4/random/ --gen_ckpt_path PATH_TO_MODEL_CHECKPOINT --split test --num-workers 80 --num-gpus 8 --use-vllm
+```
+
+______________________________________________________________________
+
+
 ![# LLaMA Factory](assets/logo.png)
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/hiyouga/LLaMA-Factory?style=social)](https://github.com/hiyouga/LLaMA-Factory/stargazers)
